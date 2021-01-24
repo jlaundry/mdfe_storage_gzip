@@ -1,0 +1,39 @@
+{
+  "scriptFile": "__init__.py",
+  "bindings": [
+    {
+      "name": "msg",
+      "type": "queueTrigger",
+      "direction": "in",
+
+      "queueName": "compressible",
+      "connection": "MDfETelemetryStorage"
+    },
+    {
+      "name": "infile",
+      "type": "blob",
+      "direction": "in",
+
+      "connection": "MDfETelemetryStorage",
+      "path": "{queueTrigger}"
+    },
+    {
+      "name": "outfile",
+      "type": "blob",
+      "direction": "out",
+
+      "dataType": "binary",
+      
+      "connection": "MDfETelemetryStorage",
+      "path": "archive/{queueTrigger}.gz"
+    },
+    {
+        "name": "deletable",
+        "type": "queue",
+        "direction": "out",
+
+        "queueName": "deletable",
+        "connection": "MDfETelemetryStorage"
+    }
+  ]
+}
