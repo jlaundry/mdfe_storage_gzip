@@ -55,6 +55,16 @@ resource "azurerm_storage_container" "archive" {
   container_access_type = "private"
 }
 
+resource "azurerm_storage_queue" "compressible" {
+  name                 = "compressible"
+  storage_account_name = azurerm_storage_account.mdfetelemetry.name
+}
+
+resource "azurerm_storage_queue" "deletable" {
+  name                 = "deletable"
+  storage_account_name = azurerm_storage_account.mdfetelemetry.name
+}
+
 resource "azurerm_management_lock" "mdfetelemetry-lock" {
   name       = "nodelete"
   scope      = azurerm_storage_account.mdfetelemetry.id
@@ -73,6 +83,10 @@ module "mdfetelemetryfunc" {
   env                      = var.env
   resource_group_name      = azurerm_resource_group.mdfetelemetry.name
   location                 = azurerm_resource_group.mdfetelemetry.location
+
+  app_settings = {
+    MDfETelemetryStorage = azurerm_storage_account.mdfetelemetry.primary_connection_string
+  }
 
   tags = azurerm_resource_group.mdfetelemetry.tags
 }
