@@ -1,0 +1,9 @@
+{
+	"name": "Python 3",
+	"image": "mcr.microsoft.com/devcontainers/python:3.10-bullseye",
+	"features": {
+		"ghcr.io/jlaundry/devcontainer-features/azure-functions-core-tools:1": {
+			"version": "latest"
+		}
+	}
+}
