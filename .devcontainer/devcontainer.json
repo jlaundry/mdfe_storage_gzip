@@ -1,16 +1,4 @@
 {
-	"name": "Python 3",
-	"image": "mcr.microsoft.com/devcontainers/python:3.10-bullseye",
-	"features": {
-		"ghcr.io/jlaundry/devcontainer-features/azure-functions-core-tools:1": {
-			"version": "latest"
-		}
-	},
-	"customizations": {
-		"vscode": {
-			"extensions": [
-				"Azurite.azurite"
-			]
-		}
-	}
+    "name": "Azure Functions - Python",
+    "image": "ghcr.io/jlaundry/devcontainers/func-python:latest"
 }
