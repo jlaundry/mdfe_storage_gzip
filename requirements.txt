@@ -1,6 +1,6 @@
 azure-core==1.36.0
 azure-functions==1.24.0
-azure-storage-blob==12.27.0
+azure-storage-blob==12.27.1
 certifi==2025.10.5
 cffi==2.0.0
 charset-normalizer==3.4.4
