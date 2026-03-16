@@ -11,7 +11,7 @@ from azure.storage.blob import BlobServiceClient
 
 def main(mytimer: func.TimerRequest, outqueue: func.Out[typing.List[str]]) -> None:
 
-    start_time = datetime.utcnow().replace(tzinfo=timezone.utc)
+    start_time = datetime.now(timezone.utc)
     logging.info(f"Daily timer trigger started at {start_time.isoformat()} (pastdue:{mytimer.past_due})")
     queue_output = []
 
@@ -42,5 +42,5 @@ def main(mytimer: func.TimerRequest, outqueue: func.Out[typing.List[str]]) -> No
                 continue
 
     outqueue.set(queue_output)
-    end_time = datetime.utcnow().replace(tzinfo=timezone.utc)
+    end_time = datetime.now(timezone.utc)
     logging.info(f"Done, time:{(end_time - start_time)} queue_size:{len(queue_output)} skipped:{skipped}")
